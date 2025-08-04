@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { Head, router } from '@inertiajs/vue3'
 import { computed } from 'vue'
-import Button from '@/components/ui/Button.vue'
-import Alert from '@/components/ui/Alert.vue'
-import UserDto from '../../app/dtos/user'
+import { Button } from '@/components/ui/button'
+import UserDto from '#dtos/user'
 
 const props = defineProps<{
   user?: UserDto | null
@@ -28,24 +27,9 @@ const logout = () => {
 
 <template>
   <Head title="Homepage" />
-  <div class="p-8 max-w-4xl mx-auto">
+  <div class="max-w-4xl mx-auto">
     <h1 class="text-4xl font-bold mb-4">Homepage</h1>
     <p class="text-muted-foreground mb-6">Welcome to your AdonisJS app with shadcn/ui!</p>
-
-    <!-- Flash Messages -->
-    <div v-if="errors?.error" class="mb-6">
-      <Alert variant="destructive" title="Error" :description="errors.error" />
-    </div>
-
-    <div v-if="messages?.success" class="mb-6">
-      <Alert
-        variant="success"
-        title="Success"
-        :description="
-          typeof messages.success === 'string' ? messages.success : JSON.stringify(messages.success)
-        "
-      />
-    </div>
 
     <!-- User Info Section -->
     <div v-if="isLoggedIn" class="mb-8">
